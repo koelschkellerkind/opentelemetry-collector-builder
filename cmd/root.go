@@ -96,6 +96,8 @@ func initConfig() {
 	// load the config file
 	if err := viper.ReadInConfig(); err == nil {
 		cfg.Logger.Info("Using config file", "path", viper.ConfigFileUsed())
+	} else {
+		cfg.Logger.Error(err, "failed to use config file")
 	}
 
 	// convert Viper's internal state into our configuration object
